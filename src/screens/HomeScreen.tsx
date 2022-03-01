@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
-import {View, Text} from 'react-native';
-import { useSelector } from 'react-redux';
+import styled from 'styled-components/native';
+import {Text} from 'react-native';
+import {useSelector} from 'react-redux';
 import apiCreate from '../services/api';
 
 const HomeScreen = () => {
@@ -12,12 +13,18 @@ const HomeScreen = () => {
   }, []);
 
   const {isDark} = useSelector(({theme}) => theme)
-  
+
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+    <Container>
       <Text>Home Screen</Text>
-    </View>
+    </Container>
   );
 };
 
 export default HomeScreen;
+
+const Container = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
