@@ -8,26 +8,29 @@
  * @format
  */
 
-import React from 'react';
-import {Provider} from 'react-redux';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import HomeScreen from './src/screens/HomeScreen';
+import React from 'react'
+import { Provider } from 'react-redux'
+import { ThemeProvider } from 'styled-components/native'
+import theme from './src/styles/theme'
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import HomeScreen from './src/screens/HomeScreen'
 import store from './src/store'
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator()
 
 const App = () => {
-
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{headerShown: false}}>
-          <Stack.Screen name="Home" component={HomeScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <ThemeProvider theme={theme}>
+        <NavigationContainer>
+          <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name='Home' component={HomeScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </ThemeProvider>
     </Provider>
-  );
-};
+  )
+}
 
-export default App;
+export default App

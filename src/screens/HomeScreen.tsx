@@ -1,30 +1,33 @@
-import React, {useEffect} from 'react';
-import styled from 'styled-components/native';
-import {Text} from 'react-native';
-import {useSelector} from 'react-redux';
-import apiCreate from '../services/api';
+import React, { useEffect } from 'react'
+import styled from 'styled-components/native'
+import { useSelector } from 'react-redux'
+import Banner from '../components/Banner'
+import apiCreate from '../services/api'
+
+interface TypeProps{
+  isDark: boolean
+}
 
 const HomeScreen = () => {
   useEffect(() => {
     async function handleRequest() {
-      const response = await apiCreate.get('ability/?limit=15&offset=0');
+      const response = await apiCreate.get('ability/?limit=15&offset=0')
     }
-    handleRequest();
-  }, []);
+    handleRequest()
+  }, [])
 
-  const {isDark} = useSelector(({theme}) => theme)
+  const { isDark } = useSelector(({ themeSlice }) => themeSlice)
 
   return (
-    <Container>
-      <Text>Home Screen</Text>
+    <Container isDark={isDark}>
+      <Banner isDark={isDark} />
     </Container>
-  );
-};
+  )
+}
 
-export default HomeScreen;
+export default HomeScreen
 
-const Container = styled.View`
+const Container = styled.View<TypeProps>`
   flex: 1;
-  justify-content: center;
-  align-items: center;
-`;
+  background-color: ${({ theme, isDark }) => (isDark ? theme.colors.background_dark : theme.colors.background)};
+`
