@@ -17,7 +17,7 @@ const Banner = ({ isDark }: boolean) => {
       <ButtonContainer>
         <LogoContainer>
           <Logo source={images.logo} />
-          <LogoName>ioasys pokédex</LogoName>
+          <LogoName>pokédex</LogoName>
         </LogoContainer>
         <SwitchButton isVisible={isDark} onPress={handleToggleTheme}/>
       </ButtonContainer>
